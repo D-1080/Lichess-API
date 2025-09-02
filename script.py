@@ -16,15 +16,14 @@ def fetch_user_games(username, max_games=50):
     url = f"{LICHESS_API}/games/user/{username}"
     params = {
         "max": max_games,
-        "moves": "true",
-        "opening": "true",
-        "clocks": "true",
-        "pgnInJson": "true"
+        "moves": "true",       # Get PGN moves
+        "opening": "true",     # Get opening info
+        "clocks": "true",      # Get per-move clock times
+        "pgnInJson": "true"    # Get PGN as JSON instead of raw text
     }
     headers = {"Accept": "application/x-ndjson"}
     r = requests.get(url, params=params, headers=headers, stream=True)
     r.raise_for_status()
-    print(r)
 
     games = []
     for line in r.iter_lines():
@@ -40,11 +39,22 @@ def process_games(games):
         speed = g.get("speed")
         perf = g.get("perf")
         winner = g.get("winner")
+
+        # Opening information
         opening_name = g.get("opening", {}).get("name", "Unknown")
+        opening_code = g.get("opening", {}).get("eco", "Unknown")
+
+        # Player info
         white_name = g["players"]["white"]["user"]["name"] if "user" in g["players"]["white"] else "Anonymous"
         black_name = g["players"]["black"]["user"]["name"] if "user" in g["players"]["black"] else "Anonymous"
+        white_rating = g["players"]["white"].get("rating", None)
+        black_rating = g["players"]["black"].get("rating", None)
 
+        # Game content
         moves = g.get("moves", "")
+        clocks = g.get("clocks", [])
+        final_fen = g.get("fen", "")
+        pgn = g.get("pgn", "")
 
         rows.append({
             "game_id": game_id,
@@ -52,10 +62,16 @@ def process_games(games):
             "speed": speed,
             "perf": perf,
             "winner": winner,
-            "opening": opening_name,
+            "opening_name": opening_name,
+            "opening_code": opening_code,
             "white": white_name,
             "black": black_name,
-            "moves": moves
+            "white_rating": white_rating,
+            "black_rating": black_rating,
+            "moves": moves,
+            "clocks": clocks,
+            "final_fen": final_fen,
+            "pgn": pgn
         })
     return pd.DataFrame(rows)
 
@@ -84,8 +100,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-'''
-here is the script.py  
-We wanted the details of the person.. so we added "DrNykterstein"  But this file is giving all details about the player_games and player_profile files 
-'''
