@@ -1,0 +1,92 @@
+{
+  "id": "drnykterstein",
+  "username": "DrNykterstein",
+  "perfs": {
+    "ultraBullet": {
+      "games": 92,
+      "rating": 2406,
+      "rd": 216,
+      "prog": -7,
+      "prov": true
+    },
+    "bullet": {
+      "games": 9559,
+      "rating": 3218,
+      "rd": 64,
+      "prog": 21
+    },
+    "blitz": {
+      "games": 604,
+      "rating": 3131,
+      "rd": 147,
+      "prog": 22,
+      "prov": true
+    },
+    "rapid": {
+      "games": 0,
+      "rating": 2500,
+      "rd": 150,
+      "prog": 0,
+      "prov": true
+    },
+    "classical": {
+      "games": 0,
+      "rating": 2500,
+      "rd": 150,
+      "prog": 0,
+      "prov": true
+    },
+    "correspondence": {
+      "games": 0,
+      "rating": 1500,
+      "rd": 500,
+      "prog": 0,
+      "prov": true
+    },
+    "chess960": {
+      "games": 129,
+      "rating": 2541,
+      "rd": 169,
+      "prog": -26,
+      "prov": true
+    },
+    "atomic": {
+      "games": 25,
+      "rating": 2160,
+      "rd": 245,
+      "prog": 85,
+      "prov": true
+    }
+  },
+  "title": "GM",
+  "flair": "people.santa-claus-light-skin-tone",
+  "patron": true,
+  "createdAt": 1544100290814,
+  "profile": {},
+  "seenAt": 1748119834583,
+  "playTime": {
+    "total": 1166969,
+    "tv": 663342
+  },
+  "url": "https://lichess.org/@/DrNykterstein",
+  "count": {
+    "all": 10424,
+    "rated": 10409,
+    "ai": 1,
+    "draw": 832,
+    "drawH": 832,
+    "loss": 2405,
+    "lossH": 2404,
+    "win": 7187,
+    "winH": 7187,
+    "bookmark": 0,
+    "playing": 0,
+    "import": 0,
+    "me": 0
+  },
+  "streamer": {
+    "twitch": {
+      "channel": "https://www.twitch.tv/maskenissen"
+    }
+  }
+}
